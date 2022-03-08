@@ -1,7 +1,8 @@
 #include "init.h"
 #include "calculator.h"
 #include <iostream>
+#include "user.h"
 int main()
 {
-	std::cout << eval("123.123");
+	user_sign_up();
 }

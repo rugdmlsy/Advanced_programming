@@ -8,7 +8,7 @@ userNode *search_user(string uid)
     userNode *p = userHead, *q = nullptr;
     while (p != nullptr)
     {
-        if (p->usr.ID == uid)
+        if (p->usr.ID == uid || p->usr.name == uid)
         {
             q = p;
             break;

@@ -30,3 +30,38 @@ string check_yn()
     }
     return opt;
 }
+
+string check_num(int len)
+{
+    string ret;
+    cin >> ret;
+    while (ret.length() > len || !range_in(ret, '0', '9'))
+    {
+        if (ret.length() > len)
+            cout << "Please enter a maximum of " << len << " characters: ";
+        else
+            cout << "Please enter numbers: ";
+        cin >> ret;
+    }
+    return ret;
+}
+
+string check_str(int len)
+{
+    string ret;
+    cin >> ret;
+    while (ret.length() > len)
+    {
+        cout << "Please enter a maximum of " << len << " characters: ";
+        cin >> ret;
+    }
+    return ret;
+}
+
+bool range_in(string str, char min, char max)
+{
+    for (int i = 0, len = str.length(); i < len; i++)
+        if (str[i] < min || str[i] > max)
+            return false;
+    return true;
+}
