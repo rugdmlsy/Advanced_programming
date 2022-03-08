@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include "check.h"
 using namespace std;
 
 int check_opt(int min, int max)

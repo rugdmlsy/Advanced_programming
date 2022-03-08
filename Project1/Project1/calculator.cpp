@@ -1,7 +1,7 @@
 #include <string>
 #include <cmath>
 #include <iostream>
-#include <calculator.h>
+#include "calculator.h"
 using namespace std;
 const string OPER = "+-*/";
 
@@ -40,45 +40,45 @@ double eval(string expr)
     return s;
 };
 
-string token(string expr)
-{
-    int i = 0, l = expr.length();
-    numNode *p = new numNode;
-    if (expr[0] == '-')
-    {
-        i++;
-        string n = "";
-        while (i < l && expr.find(OPER) == string::npos)
-        {
-            n += expr[i];
-            i++;
-        }
-        p->num = -eval(n);
-        now->next = p;
-        now = now->next;
-    }
-    else
-    {
-        string n = "";
-        while (i < l && expr.find(OPER) == string::npos)
-        {
-            n += expr[i];
-            i++;
-        }
-        p->num = eval(n);
-        now->next = p;
-        now = now->next;
-    }
-    if (i < l)
-    {
-        i++;
-        numNode *p = new numNode;
-        p->opr = expr[i];
-    }
-    while (i < l)
-    {
-    }
-}
+//string token(string expr)
+//{
+//    int i = 0, l = expr.length();
+//    numNode *p = new numNode;
+//    if (expr[0] == '-')
+//    {
+//        i++;
+//        string n = "";
+//        while (i < l && expr.find(OPER) == string::npos)
+//        {
+//            n += expr[i];
+//            i++;
+//        }
+//        p->num = -eval(n);
+//        now->next = p;
+//        now = now->next;
+//    }
+//    else
+//    {
+//        string n = "";
+//        while (i < l && expr.find(OPER) == string::npos)
+//        {
+//            n += expr[i];
+//            i++;
+//        }
+//        p->num = eval(n);
+//        now->next = p;
+//        now = now->next;
+//    }
+//    if (i < l)
+//    {
+//        i++;
+//        numNode *p = new numNode;
+//        p->opr = expr[i];
+//    }
+//    while (i < l)
+//    {
+//    }
+//}
 
 double operate(char oprt, double para1, double para2)
 {

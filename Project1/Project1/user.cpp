@@ -26,7 +26,7 @@ void user_sign_up()
     total.maxUID += 1;
     string uid = "U";
     char n[4];
-    sprintf(n, "%03d", total.maxUID);
+    sprintf_s(n, "%03d", total.maxUID);
     uid += num;
 
     userNode *q = new userNode;
