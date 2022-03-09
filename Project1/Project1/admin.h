@@ -1,7 +1,7 @@
 #pragma once
 
 void admin_see_goods();
-void admin_search();
+void admin_search_goods();
 void admin_unshelve();
 void admin_see_orders();
 void admin_see_users();

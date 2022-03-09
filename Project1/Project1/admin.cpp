@@ -9,6 +9,7 @@
 #include "goods.h"
 #include "total.h"
 #include "file.h"
+#include "user.h"
 using namespace std;
 
 void admin_log_in()
@@ -20,7 +21,7 @@ void admin_log_in()
     cin >> p;
     if (n != ADMINNAME || p != ADMINPASSWORD)
     {
-        cout << "The name or the password is wrong! Log in failed!\n";
+        cout << "The name or the password is wrong! Log in failed!\n\n";
         init_menu();
     }
     else
@@ -32,7 +33,7 @@ void admin_log_in()
 
 void admin_see_goods()
 {
-    goodNode *p = goodHead;
+    goodNode *p = total.goodHead;
     cout << "*****************************************************************************\n";
     cout << "ID\tName\tPrice\tLaunch date\tSeller ID\tAmount\tState\n";
     while (p != nullptr)
@@ -47,7 +48,7 @@ void admin_see_goods()
 
 void admin_see_orders()
 {
-    orderNode *p = orderHead;
+    orderNode *p = total.orderHead;
     cout << "*****************************************************************************\n";
     cout << "Order ID\tCommodity ID\tUnit price\tAmount\tDate\tSeller ID\tBuyer ID\n";
     while (p != nullptr)
@@ -62,7 +63,7 @@ void admin_see_orders()
 
 void admin_see_users()
 {
-    userNode *p = userHead;
+    userNode *p = total.userHead;
     cout << "***********************************************************************************\n";
     cout << "ID\tName\tPhone number\tAddress\tBalance\tState\n";
     while (p != nullptr)
@@ -95,7 +96,7 @@ void admin_ban()
     if (opt == "y")
     {
         p->usr.state = "inactive";
-        update_user();
+        update_users();
         cout << "Banning success!\n\n";
     }
     else
@@ -136,7 +137,7 @@ void admin_search_goods()
     cout << "Please input the commodity name: ";
     string n;
     cin >> n;
-    goodNode *p = goodHead;
+    goodNode *p = total.goodHead;
     cout << "*************************************************************************\n";
     cout << "ID\tName\tPrice\tLaunch time\tSeller ID\tAmount\tState\n";
     while (p != nullptr)

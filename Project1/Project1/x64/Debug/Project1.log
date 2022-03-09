@@ -10,8 +10,5 @@ D:\Advanced_programming\Project1\Project1\user.h(1,1): warning C4819: 该文件�
 D:\Advanced_programming\Project1\Project1\user.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
   user.cpp
 D:\Advanced_programming\Project1\Project1\user.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-D:\Advanced_programming\Project1\Project1\user.cpp(32,19): error C2280: “userNode::userNode(void)”: 尝试引用已删除的函数
-D:\Advanced_programming\Project1\Project1\user.h(20): message : 编译器已在此处生成“userNode::userNode”
-D:\Advanced_programming\Project1\Project1\user.h(20,1): message : “userNode::userNode(void)”: 由于“userNode”具有引用类型未初始化的数据成员“userNode::usr”，因此已隐式删除函数
-D:\Advanced_programming\Project1\Project1\user.h(18): message : 参见“userNode::usr”的声明
   正在生成代码...
+  Project1.vcxproj -> D:\Advanced_programming\Project1\x64\Debug\Project1.exe

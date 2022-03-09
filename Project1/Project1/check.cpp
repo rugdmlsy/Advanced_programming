@@ -3,6 +3,13 @@
 #include "check.h"
 using namespace std;
 
+double check_db() {
+    double i;
+    while (!(cin >> i) || i < 0)
+        cout << "Invalid input! Please input again: ";
+    return i;
+}
+
 int check_opt(int min, int max)
 {
     int i;
@@ -41,7 +48,7 @@ string check_num(int len)
         if (ret.length() > len)
             cout << "Please enter a maximum of " << len << " characters: ";
         else
-            cout << "Please enter numbers: ";
+            cout << "Invalid input! Please enter numbers: ";
         cin >> ret;
     }
     return ret;

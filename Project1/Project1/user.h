@@ -15,7 +15,7 @@ struct User
 
 struct userNode
 {
-	User &usr;
+	User usr;
 	userNode *next = nullptr;
 };
 

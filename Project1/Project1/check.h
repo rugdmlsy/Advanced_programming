@@ -7,3 +7,4 @@ string check_yn();
 string check_str(int len);
 string check_num(int len);
 bool range_in(string str, char min, char max);
+double check_db();

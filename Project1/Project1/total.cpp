@@ -5,14 +5,11 @@ using namespace std;
 
 userNode *search_user(string uid)
 {
-    userNode *p = userHead, *q = nullptr;
+    userNode *p = total.userHead, *q = nullptr;
     while (p != nullptr)
     {
         if (p->usr.ID == uid || p->usr.name == uid)
-        {
-            q = p;
-            break;
-        }
+            return p;
         p = p->next;
     }
     return q;
@@ -20,7 +17,7 @@ userNode *search_user(string uid)
 
 goodNode *search_good(string gid)
 {
-    goodNode *p = goodHead, *q = nullptr;
+    goodNode *p = total.goodHead, *q = nullptr;
     while (p != nullptr)
     {
         if (p->gd.ID == gid)
