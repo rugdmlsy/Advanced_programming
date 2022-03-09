@@ -6,7 +6,8 @@ struct numNode
 {
     double num;
     char opr;
-    numNode *next = nullptr;
+    numNode *next = NULL;
+    numNode* fore = NULL;
 };
 
 double calculator(string expr);                        // the main fuction

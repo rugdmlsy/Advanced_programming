@@ -23,7 +23,7 @@ void init_menu()
         switch (opt)
         {
         case 1:
-            admin_log_in();
+            admin.log_in();
             break;
         case 2:
             user_log_in();

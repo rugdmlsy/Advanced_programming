@@ -3,6 +3,8 @@
 #include "total.h"
 using namespace std;
 
+Total total;
+
 userNode *search_user(string uid)
 {
     userNode *p = total.userHead, *q = nullptr;

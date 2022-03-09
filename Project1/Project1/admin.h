@@ -1,10 +1,14 @@
 #pragma once
+class Admin {
+public:
+	void see_goods();
+	void search_goods();
+	void unshelve();
+	void see_orders();
+	void see_users();
+	void ban();
+	void log_in();
+	void menu();
+};
 
-void admin_see_goods();
-void admin_search_goods();
-void admin_unshelve();
-void admin_see_orders();
-void admin_see_users();
-void admin_ban();
-void admin_log_in();
-void admin_menu();
+extern Admin admin;

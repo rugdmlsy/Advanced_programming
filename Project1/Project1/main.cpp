@@ -5,5 +5,5 @@
 #include "admin.h"
 int main()
 {
-	user_sign_up();
+	user.sign_up();
 }

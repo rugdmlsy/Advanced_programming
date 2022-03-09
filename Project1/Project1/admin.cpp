@@ -12,7 +12,9 @@
 #include "user.h"
 using namespace std;
 
-void admin_log_in()
+Admin admin;
+
+void Admin::log_in()
 {
     cout << "Please input the admin name: ";
     string n, p;
@@ -27,11 +29,11 @@ void admin_log_in()
     else
     {
         cout << "\n------------Log in success!------------\n\n";
-        admin_menu();
+        admin.menu();
     }
 }
 
-void admin_see_goods()
+void Admin::see_goods()
 {
     goodNode *p = total.goodHead;
     cout << "*****************************************************************************\n";
@@ -46,7 +48,7 @@ void admin_see_goods()
     cout << "*****************************************************************************\n\n";
 }
 
-void admin_see_orders()
+void Admin::see_orders()
 {
     orderNode *p = total.orderHead;
     cout << "*****************************************************************************\n";
@@ -61,7 +63,7 @@ void admin_see_orders()
     cout << "*****************************************************************************\n\n";
 }
 
-void admin_see_users()
+void Admin::see_users()
 {
     userNode *p = total.userHead;
     cout << "***********************************************************************************\n";
@@ -76,7 +78,7 @@ void admin_see_users()
     cout << "***********************************************************************************\n\n";
 }
 
-void admin_ban()
+void Admin::ban()
 {
     cout << "Please input the ID of the user you want to ban: ";
     string uid = check_ID('U');
@@ -103,7 +105,7 @@ void admin_ban()
         cout << "Banning cancelled.\n\n";
 }
 
-void admin_unshelve()
+void Admin::unshelve()
 {
     cout << "Please input the ID of the commodity you want to unshelve: ";
     string mid = check_ID('M');
@@ -132,7 +134,7 @@ void admin_unshelve()
         cout << "Unshelve cancelled.\n\n";
 }
 
-void admin_search_goods()
+void Admin::search_goods()
 {
     cout << "Please input the commodity name: ";
     string n;
@@ -153,7 +155,7 @@ void admin_search_goods()
     cout << "*************************************************************************\n\n";
 }
 
-void admin_menu()
+void Admin::menu()
 {
     while (1)
     {
@@ -165,22 +167,22 @@ void admin_menu()
         switch (opt)
         {
         case 1:
-            admin_see_goods();
+            admin.see_goods();
             break;
         case 2:
-            admin_search_goods();
+            admin.search_goods();
             break;
         case 3:
-            admin_unshelve();
+            admin.unshelve();
             break;
         case 4:
-            admin_see_orders();
+            admin.see_orders();
             break;
         case 5:
-            admin_see_users();
+            admin.see_users();
             break;
         case 6:
-            admin_ban();
+            admin.ban();
             break;
         case 7:
             init_menu();

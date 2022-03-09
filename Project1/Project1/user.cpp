@@ -11,7 +11,11 @@
 
 using namespace std;
 
-void user_sign_up()
+User user;
+Seller seller;
+Buyer buyer;
+
+void User::sign_up()
 {
     cout << "Please input your name: ";
     string name = check_str(10);
@@ -49,28 +53,31 @@ void user_sign_up()
     }
     update_users();
 
-    admin_see_users(); //for test
+    admin.see_users(); // for test
 
     cout << "Sign up success!\n\n";
 }
 
-void user_log_in()
+void User::log_in()
 {
     cout << "Please input your name: ";
     string nm = check_str(10);
-    userNode* p = total.userHead;
-    while (p != nullptr) {
-        if (p->usr.name == nm) 
+    userNode *p = total.userHead;
+    while (p != nullptr)
+    {
+        if (p->usr.name == nm)
             break;
         p = p->next;
     }
-    if (p == nullptr) {
+    if (p == nullptr)
+    {
         cout << "Not found!\n";
         return;
     }
     cout << "Please input your password: ";
     string pw = check_str(20);
-    if (p->usr.pswd != pw) {
+    if (p->usr.pswd != pw)
+    {
         cout << "Incorrect password!\n";
         return;
     }
@@ -79,15 +86,17 @@ void user_log_in()
     return user_menu();
 }
 
-void user_menu()
+void User::menu()
 {
-    while (1) {
+    while (1)
+    {
         cout << "=========================================================\n";
         cout << "1.I'm buyer 2.I'm seller 3.Personal information 4.Exit\n";
         cout << "=========================================================\n";
         cout << "Please input your option: ";
         int opt = check_opt(1, 4);
-        switch (opt) {
+        switch (opt)
+        {
         case 1:
             buyer_menu();
             break;
@@ -103,14 +112,17 @@ void user_menu()
     }
 }
 
-void PIM_menu() {
-    while (1) {
+void User::PIM_menu()
+{
+    while (1)
+    {
         cout << "=================================================================\n";
         cout << "1.View information 2.Modify information 3.Recharge 4.Exit\n";
         cout << "=================================================================\n";
         cout << "Please input your option: ";
         int opt = check_opt(1, 4);
-        switch (opt) {
+        switch (opt)
+        {
         case 1:
             pim_view_info();
             break;
@@ -126,7 +138,8 @@ void PIM_menu() {
     }
 }
 
-void pim_recharge() {
+void User::recharge()
+{
     cout << "Current balance: ";
     printf("%.1lf\n", total.userNow->usr.balance);
     cout << "Please input recharge amount: ";
@@ -136,25 +149,30 @@ void pim_recharge() {
     cout << "Recharge success!\n\n";
 }
 
-void pim_modi_info() {
+void User::modi_info()
+{
     cout << "Please input your option(1.User name 2.Phone number 3.Address): ";
-    int opt = check_opt(1,3);
-    switch (opt) {
-    case 1: {
+    int opt = check_opt(1, 3);
+    switch (opt)
+    {
+    case 1:
+    {
         cout << "Please input the modified name: ";
         string nm = check_str(10);
         total.userNow->usr.name = nm;
         break;
     }
 
-    case 2: {
+    case 2:
+    {
         cout << "Please input the modified number: ";
         string num = check_num(20);
         total.userNow->usr.number = num;
         break;
     }
-        
-    case 3: {
+
+    case 3:
+    {
         cout << "Please input the modified address: ";
         string ad = check_str(40);
         total.userNow->usr.addr = ad;
@@ -165,7 +183,8 @@ void pim_modi_info() {
     cout << "Modify success!\n\n";
 }
 
-void pim_view_info() {
+void User::view_info()
+{
     cout << "*****************************\n";
     cout << "User name: " << total.userNow->usr.name << endl;
     cout << "Phone number: " << total.userNow->usr.number << endl;
@@ -174,43 +193,49 @@ void pim_view_info() {
     cout << "*****************************\n\n";
 }
 
-void buyer_menu() {
-    while (1) {
+void Buyer::menu()
+{
+    while (1)
+    {
         cout << "=====================================================================================\n";
         cout << "1.View goods 2.Buy goods 3.Search goods 4.My orders 5.View details 6.Exit\n";
         cout << "=====================================================================================\n";
         cout << "Please input your option: ";
         int opt = check_opt(1, 6);
-        switch (opt) {
-        case 1: 
-            buyer_see_goods();
+        switch (opt)
+        {
+        case 1:
+            buyer.see_goods();
             break;
         case 2:
-            buy_goods();
+            // buy_goods();
             break;
         case 3:
-            buyer_search();
+            buyer.search();
             break;
         case 4:
-            buyer_see_orders();
+            buyer.see_orders();
             break;
         case 5:
-            buyer_see_details();
+            buyer.see_details();
             break;
         case 6:
-            return user_menu();
+            return user.menu();
         }
     }
 }
 
-void buyer_search() {
+void Buyer::search()
+{
     cout << "Please input the name of the commodity: ";
     string nm = check_str(20);
-    goodNode* p = total.goodHead;
+    goodNode *p = total.goodHead;
     cout << "****************************************************************\n";
     cout << "Commodity ID\tName\tPrice\tLaunch time\tSeller ID\n";
-    while (p != nullptr) {
-        if (p->gd.name.find(nm) != string::npos) {
+    while (p != nullptr)
+    {
+        if (p->gd.name.find(nm) != string::npos)
+        {
             cout << p->gd.ID << "\t" << p->gd.name << "\t";
             printf("%.1lf\t", p->gd.price);
             cout << p->gd.time << "\t" << p->gd.sellerID << "\n";
@@ -220,11 +245,13 @@ void buyer_search() {
     cout << "****************************************************************\n\n";
 }
 
-void buyer_see_details() {
+void Buyer::see_details()
+{
     cout << "Please input the ID of the commodity you want to view: ";
     string mid = check_ID('M');
-    goodNode* p = search_good(mid);
-    if (p == nullptr) {
+    goodNode *p = search_good(mid);
+    if (p == nullptr)
+    {
         cout << "Not found!\n";
         return;
     }
@@ -239,12 +266,15 @@ void buyer_see_details() {
     cout << "***************************************\n\n";
 }
 
-void buyer_see_orders() {
-    orderNode* p = total.orderHead;
+void Buyer::see_orders()
+{
+    orderNode *p = total.orderHead;
     cout << "**************************************************************************\n";
     cout << "Order ID\tCommodity ID\tUnit price\tAmount\tDate\tSeller ID\n";
-    while (p != nullptr) {
-        if (p->odr.buyerID == total.userNow->usr.ID) {
+    while (p != nullptr)
+    {
+        if (p->odr.buyerID == total.userNow->usr.ID)
+        {
             cout << p->odr.ID << "\t" << p->odr.goodID << "\t";
             printf("%.1lf\t", p->odr.price);
             cout << p->odr.amount << "\t" << p->odr.time << "\t" << p->odr.sellerID << "\n";
@@ -254,12 +284,15 @@ void buyer_see_orders() {
     cout << "**************************************************************************\n";
 }
 
-void buyer_see_goods() {
-    goodNode* p = total.goodHead;
+void Buyer::see_goods()
+{
+    goodNode *p = total.goodHead;
     cout << "**********************************************************************\n";
     cout << "Commodity ID\tName\tPrice\tLaunch time\tSeller ID\n";
-    while (p != nullptr) {
-        if (p->gd.state == "onSale") {
+    while (p != nullptr)
+    {
+        if (p->gd.state == "onSale")
+        {
             cout << p->gd.ID << "\t" << p->gd.name << "\t";
             printf("%.1lf\t", p->gd.price);
             cout << p->gd.time << "\t" << p->gd.sellerID << "\n";
@@ -269,7 +302,8 @@ void buyer_see_goods() {
     cout << "**********************************************************************\n\n";
 }
 
-void seller_menu() {
+void Seller::menu()
+{
     while (true)
     {
         cout << "=====================================================================================\n";
@@ -277,24 +311,25 @@ void seller_menu() {
         cout << "=====================================================================================\n";
         cout << "Please input your option: ";
         int opt = check_opt(1, 6);
-        switch (opt) {
-        case 1:
-            seller_launch();
-            break;
-        case 2:
-            seller_see_goods();
-            break;
-        case 3:
-            seller_modi();
-            break;
-        case 4:
-            seller_unshelve();
-            break;
-        case 5:
-            seller_see_orders();
-            break;
+        switch (opt)
+        {
+        // case 1:
+        //     seller_launch();
+        //     break;
+        // case 2:
+        //     seller_see_goods();
+        //     break;
+        // case 3:
+        //     seller_modi();
+        //     break;
+        // case 4:
+        //     seller_unshelve();
+        //     break;
+        // case 5:
+        //     seller_see_orders();
+        //     break;
         case 6:
-            return user_menu();
+            return user.menu();
         }
     }
 }
