@@ -1,14 +1,3 @@
-﻿  admin.cpp
-D:\Advanced_programming\Project1\Project1\user.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-  file.cpp
-D:\Advanced_programming\Project1\Project1\user.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-  init.cpp
-D:\Advanced_programming\Project1\Project1\user.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-  main.cpp
-D:\Advanced_programming\Project1\Project1\user.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-  total.cpp
-D:\Advanced_programming\Project1\Project1\user.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-  user.cpp
-D:\Advanced_programming\Project1\Project1\user.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-  正在生成代码...
-  Project1.vcxproj -> D:\Advanced_programming\Project1\x64\Debug\Project1.exe
+﻿  user.cpp
+E:\C&C++\Advanced Programming\Project-01\Project1\Project1\user.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  Project1.vcxproj -> E:\C&C++\Advanced Programming\Project-01\Project1\x64\Debug\Project1.exe

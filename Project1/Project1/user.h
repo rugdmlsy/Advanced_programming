@@ -52,3 +52,13 @@ public:
 void user_menu();
 void user_log_in();
 void user_sign_up();
+void PIM_menu();
+void pim_recharge();
+void pim_modi_info();
+void pim_view_info();
+void buyer_menu();
+void buyer_search();
+void buyer_see_details();
+void buyer_see_orders();
+void buyer_see_goods();
+void seller_menu();

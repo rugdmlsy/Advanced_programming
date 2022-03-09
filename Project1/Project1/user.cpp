@@ -186,7 +186,7 @@ void buyer_menu() {
             buyer_see_goods();
             break;
         case 2:
-            buy_goods();
+            //buy_goods();
             break;
         case 3:
             buyer_search();
@@ -278,20 +278,20 @@ void seller_menu() {
         cout << "Please input your option: ";
         int opt = check_opt(1, 6);
         switch (opt) {
-        case 1:
-            seller_launch();
-            break;
-        case 2:
-            seller_see_goods();
-            break;
-        case 3:
-            seller_modi();
-            break;
-        case 4:
-            seller_unshelve();
-            break;
-        case 5:
-            seller_see_orders();
+        //case 1:
+        //    seller_launch();
+        //    break;
+        //case 2:
+        //    seller_see_goods();
+        //    break;
+        //case 3:
+        //    seller_modi();
+        //    break;
+        //case 4:
+        //    seller_unshelve();
+        //    break;
+        //case 5:
+        //    seller_see_orders();
             break;
         case 6:
             return user_menu();
