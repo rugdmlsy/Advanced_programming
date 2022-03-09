@@ -30,7 +30,7 @@ void user_sign_up()
     string uid = "U";
     char n[4];
     sprintf_s(n, "%03d", total.maxUID);
-    uid += num;
+    uid += n;
 
     userNode *q = new userNode;
     q->usr.name = name;
@@ -39,8 +39,13 @@ void user_sign_up()
     q->usr.addr = addr;
     q->usr.ID = uid;
     userNode *p = total.userHead;
-    if (p == nullptr)
+    if (p == nullptr) {
         total.userHead = q;
+
+        cout << "123" << endl; //for test
+        cout << total.userHead->usr.name << endl;
+
+    }
     else
     {
         while (p->next != nullptr)
@@ -49,7 +54,12 @@ void user_sign_up()
     }
     update_users();
 
-    admin_see_users(); //for test
+
+    if (total.userHead == nullptr)
+        cout << "test total\n";
+    admin_see_users();              //for test
+    cout<< total.userHead->usr.name << endl;
+    
 
     cout << "Sign up success!\n\n";
 }

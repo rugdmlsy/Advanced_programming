@@ -66,6 +66,12 @@ void admin_see_users()
     userNode *p = total.userHead;
     cout << "***********************************************************************************\n";
     cout << "ID\tName\tPhone number\tAddress\tBalance\tState\n";
+    
+    if (p == nullptr) // for test
+        cout << "test\n";
+    if (total.userHead == nullptr)
+        cout << "test total\n";
+    
     while (p != nullptr)
     {
         cout << p->usr.ID << "\t" << p->usr.name << "\t" << p->usr.number << "\t" << p->usr.addr << "\t";
