@@ -47,6 +47,7 @@ public:
 	void see_details();
 	void see_orders();
 	void see_goods();
+	void buy();
 };
 
 extern User user;

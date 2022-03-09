@@ -73,3 +73,10 @@ bool range_in(string str, char min, char max)
             return false;
     return true;
 }
+
+int check_amo() {
+    int amo;
+    while (!(cin >> amo) || amo <= 0) 
+        cout << "Invalid input! Please input again: ";
+    return amo;
+}

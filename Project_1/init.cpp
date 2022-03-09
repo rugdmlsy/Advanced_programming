@@ -16,7 +16,7 @@ void init_menu()
 {
     while (1) {
         cout << "===================================================================\n";
-        cout << "1.Admin log in 2.User log in 3.User sign up 4.Exit\n";
+        cout << "1.Admin log in 2.User log in 3.User sign in 4.Exit\n";
         cout << "===================================================================\n\n";
         cout << "Please input the option: ";
         int opt = check_opt(1, 4);

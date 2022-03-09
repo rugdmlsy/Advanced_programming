@@ -50,7 +50,7 @@ void User::sign_up()
         p->next = q;
     }
     update_users();
-    cout << "Sign up success!\n\n";
+    cout << "Sign in success!\n\n";
 }
 
 void User::log_in()
@@ -99,7 +99,7 @@ void User::menu()
             seller.menu();
             break;
         case 3:
-            PIM_menu();
+            user.PIM_menu();
             break;
         case 4:
             return init_menu();
@@ -203,7 +203,7 @@ void Buyer::menu()
             buyer.see_goods();
             break;
         case 2:
-            // buy_goods();
+            buyer.buy();
             break;
         case 3:
             buyer.search();
@@ -218,6 +218,53 @@ void Buyer::menu()
             return user.menu();
         }
     }
+}
+
+void Buyer::buy() {
+    cout << "Please input the commodity ID: ";
+    string mid = check_ID('M');
+    goodNode* p = total.search_good(mid);
+    if (p == NULL) {
+        cout << "Not found!\n";
+        return;
+    }
+    cout << "Please input the amount: ";
+    int amo = check_amo();
+    string tm = total.gettime();
+    cout << "************************************************\n";
+    cout << "Please check the information of the commodity!\n";
+    cout << "Date: " << tm << endl;
+    cout << "Unit price: ";
+    printf("%.1lf\n", p->gd.price);
+    cout << "Amount: " << amo << endl;
+    cout << "Your balance: ";
+    printf("%.1lf\n", total.userNow->usr.balance);
+    cout << "************************************************\n";
+    cout << "Are you sure to buy?(y/n): ";
+    string opt = check_yn();
+    if (opt == "n") {
+        cout << "Deal cancelled.\n\n";
+        return;
+    }
+    if (amo > p->gd.amount) {
+        cout << "The quantity of  is insufficient. The deal is cancelled.\n";
+        return;
+    }
+    double amou = amo * p->gd.price;
+    if (total.userNow->usr.balance < amou) {
+        cout << "Your balance is insufficient. Please recharge first.\n";
+        return;
+    }
+    total.userNow->usr.balance -= amou;
+    p->gd.amount -= amo;
+    if (p->gd.amount == 0)
+        p->gd.state = "soldOut";
+    userNode* slr = total.search_user(p->gd.sellerID);
+    slr->usr.balance += amou;
+    total.add_order();
+    update_goods();
+    update_order();
+    update_users();
 }
 
 void Buyer::search()

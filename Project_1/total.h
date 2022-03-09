@@ -25,6 +25,7 @@ public:
     friend class User;
     friend class Buyer;
     friend class Seller;
+    string gettime();
 };
 
 extern Total total;
