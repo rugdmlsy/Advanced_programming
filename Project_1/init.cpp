@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <string>
 #include "user.h"
 #include "admin.h"
 #include "check.h"
@@ -7,7 +8,8 @@ using namespace std;
 
 void init() {
     ifstream infile("user.txt");
-    string bin;
+    string uhead;
+    getline(infile, uhead);
 
     infile.close();
 }

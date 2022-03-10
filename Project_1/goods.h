@@ -2,20 +2,27 @@
 #include <string>
 using namespace std;
 
-typedef struct good
+class Good
 {
     string ID;
     string name;
     double price;
-    unsigned int amount;
+    int amount;
     string desc;
     string sellerID;
     string time;
-    string state = "onSale";
+    string state;
+public:
+    Good();
+    friend class Seller;
+    friend class Total;
+    friend class Buyer;
+    friend class Admin;
+    friend void update_goods();
 };
 
 typedef struct goodNode
 {
-    good &gd;
+    Good gd;
     goodNode *next;
 };

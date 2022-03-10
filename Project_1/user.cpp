@@ -6,12 +6,20 @@
 #include "file.h"
 #include <iostream>
 #include "init.h"
+#include <ctime>
 
 using namespace std;
 
 User user;
 Seller seller;
 Buyer buyer;
+
+void User::setID() {
+    total.maxUID += 1;
+    char n[5];
+    sprintf_s(n, "U%03d", total.maxUID);
+    ID = n;
+}
 
 void User::sign_up()
 {
@@ -28,27 +36,16 @@ void User::sign_up()
     string num = check_num(20);
     cout << "Please input yout address: ";
     string addr = check_str(40);
-    total.maxUID += 1;
-    string uid = "U";
-    char n[5];
-    sprintf_s(n, "%03d", total.maxUID);
-    uid += n;
+    
 
     userNode *q = new userNode;
     q->usr.name = name;
     q->usr.pswd = pass;
     q->usr.number = num;
     q->usr.addr = addr;
-    q->usr.ID = uid;
-    userNode *p = total.userHead;
-    if (p == nullptr)
-        total.userHead = q;
-    else
-    {
-        while (p->next != nullptr)
-            p = p->next;
-        p->next = q;
-    }
+    q->usr.setID();
+
+    total.add_user(q);
     update_users();
     cout << "Sign in success!\n\n";
 }
@@ -261,7 +258,17 @@ void Buyer::buy() {
         p->gd.state = "soldOut";
     userNode* slr = total.search_user(p->gd.sellerID);
     slr->usr.balance += amou;
-    total.add_order();
+
+    orderNode* o = new orderNode;
+    o->odr.setID();
+    o->odr.amount = amo;
+    o->odr.goodID = p->gd.ID;
+    o->odr.price = p->gd.price;
+    o->odr.time = total.gettime();
+    o->odr.sellerID = p->gd.sellerID;
+    o->odr.buyerID = total.userNow->usr.ID;
+
+    total.add_order(o);
     update_goods();
     update_order();
     update_users();
@@ -355,23 +362,161 @@ void Seller::menu()
         int opt = check_opt(1, 6);
         switch (opt)
         {
-        // case 1:
-        //     seller_launch();
-        //     break;
-        // case 2:
-        //     seller_see_goods();
-        //     break;
-        // case 3:
-        //     seller_modi();
-        //     break;
-        // case 4:
-        //     seller_unshelve();
-        //     break;
-        // case 5:
-        //     seller_see_orders();
-        //     break;
+         case 1:
+             seller.launch();
+             break;
+         case 2:
+             seller.see_goods();
+             break;
+         case 3:
+             seller.modi();
+             break;
+         case 4:
+             seller.unshelve();
+             break;
+         case 5:
+             seller.see_orders();
+             break;
         case 6:
             return user.menu();
         }
     }
+}
+
+void Seller::launch() {
+    cout << "Please input the name: ";
+    string lname = check_str(20);
+    cout << "Please input the price: ";
+    double lprice = check_db();
+    cout << "Please input the amount: ";
+    int lamount = check_amo();
+    cout << "Please input the description: ";
+    string ldesc = check_str(200);
+    cout << "Please confirm to launch(y/n): ";
+    string lopt = check_yn();
+    if (lopt == "n") {
+        cout << "Launch cancelled.\n\n";
+        return;
+    }
+
+    goodNode* p = new goodNode;
+    p->gd.name = lname;
+    p->gd.price = lprice;
+    p->gd.desc = ldesc;
+    p->gd.amount = lamount;
+    total.add_good(p);
+    update_goods();
+
+    cout << "Launch success!\n\n";
+}
+
+void Seller::modi() {
+    cout << "Please input the commodity ID: ";
+    string mid = check_ID('M');
+    goodNode* p = total.search_good(mid);
+    if (p == NULL) {
+        cout << "Not found!\n\n";
+        return;
+    }
+    cout << "Please choose the arribute you want to modify(1.Price 2.Description): ";
+    int opt = check_opt(1, 2);
+    if (opt == 1) {
+        cout << "Please input the modified price: ";
+        double prc = check_db();
+        cout << "Please check the modified information of the commodity:\n";
+        cout << "*****************************************************\n";
+        cout << "Commodity ID: " << p->gd.ID << endl;
+        cout << "Name: " << p->gd.name << endl;
+        printf("Price: %.1lf\n", prc);
+        cout << "Description: " << p->gd.desc << endl;
+        cout << "*****************************************************\n";
+        cout << "Please confirm the modification(y/n): ";
+        string yn = check_yn();
+        if (yn == "n") {
+            cout << "Modification cancelled.\n\n";
+            return;
+        }
+        p->gd.price = prc;
+        update_goods();
+        cout << "Modify success!\n\n";
+    }
+    else if (opt == 2) {
+        cout << "Please input the modified description: ";
+        string des = check_str(200);
+        cout << "Please check the modified information of the commodity:\n";
+        cout << "*****************************************************\n";
+        cout << "Commodity ID: " << p->gd.ID << endl;
+        cout << "Name: " << p->gd.name << endl;
+        printf("Price: %.1lf\n", p->gd.price);
+        cout << "Description: " << des << endl;
+        cout << "*****************************************************\n";
+        cout << "Please confirm the modification(y/n): ";
+        string yn = check_yn();
+        if (yn == "n") {
+            cout << "Modification cancelled.\n\n";
+            return;
+        }
+        p->gd.desc = des;
+        update_goods();
+        cout << "Modify success!\n\n";
+    }
+}
+
+void Seller::unshelve() {
+    cout << "Please input the ID of the commodity you want to unshelve: ";
+    string mid = check_ID('M');
+    goodNode* p = total.search_good(mid);
+    if (p == NULL) {
+        cout << "Not found!\n";
+        return;
+    }
+    cout << "Please check the commodity information:\n";
+    cout << "************************************\n";
+    cout << "Commodity ID: " << p->gd.ID<<endl;
+    cout << "Name: " << p->gd.name << endl;
+    printf("Price: %.1lf\n", p->gd.price);
+    cout << "Launch time: " << p->gd.time << endl;
+    cout << "Amount: " << p->gd.amount << endl;
+    cout << "Seller ID: " << p->gd.sellerID << endl;
+    cout << "State: " << p->gd.state << endl;
+    cout << "************************************\n";
+    cout << "Please choose(y/n): ";
+    string opt = check_yn();
+    if (opt == "y") {
+        cout << "Unshelve cancelled.\n\n";
+        return;
+    }
+    p->gd.state = "soldOut";
+    update_goods();
+    cout << "Unshelve success!\n\n";
+}
+
+void Seller::see_orders() {
+    cout << "********************************************************************\n";
+    cout << "Order ID\tCommodity ID\tUnit price\tAmount\tDate\tBuyer ID\n";
+    orderNode* p = total.orderHead;
+    while (p != NULL) {
+        if (p->odr.sellerID == total.userNow->usr.ID) {
+            cout << p->odr.ID << "\t" << p->odr.goodID << "\t";
+            printf("%.1lf\t", p->odr.price);
+            cout << p->odr.amount << "\t" << p->odr.time << "\t" << p->odr.buyerID << "\n";
+        }
+        p = p->next;
+    }
+    cout << "********************************************************************\n\n";
+}
+
+void Seller::see_goods() {
+    goodNode* p = total.goodHead;
+    cout << "******************************************************************\n";
+    cout << "Commodity ID\tName\tPrice\tAmount\tLaunch time\tState\n";
+    while (p != NULL) {
+        if (p->gd.sellerID == total.userNow->usr.ID) {
+            cout << p->gd.ID << "\t" << p->gd.name << "\t";
+            printf("%.1lf\t", p->gd.price);
+            cout << p->gd.amount << "\t" << p->gd.time << "\t" << p->gd.state;
+        }
+        p = p->next;
+    }
+    cout << "******************************************************************\n\n";
 }

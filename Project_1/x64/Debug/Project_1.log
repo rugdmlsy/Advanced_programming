@@ -1,8 +1,32 @@
-﻿  user.cpp
-E:\AP\Project_1\user.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-E:\AP\Project_1\user.h(34,2): warning C4091: “typedef ”: 没有声明变量时忽略“userNode”的左侧
-E:\AP\Project_1\goods.h(15,2): warning C4091: “typedef ”: 没有声明变量时忽略“good”的左侧
-E:\AP\Project_1\goods.h(21,2): warning C4091: “typedef ”: 没有声明变量时忽略“goodNode”的左侧
-E:\AP\Project_1\order.h(14,2): warning C4091: “typedef ”: 没有声明变量时忽略“order”的左侧
-E:\AP\Project_1\order.h(20,2): warning C4091: “typedef ”: 没有声明变量时忽略“orderNode”的左侧
-  Project_1.vcxproj -> E:\AP\Project_1\x64\Debug\Project_1.exe
+﻿  admin.cpp
+D:\Advanced_programming\Project_1\goods.h(28,2): warning C4091: “typedef ”: 没有声明变量时忽略“goodNode”的左侧
+D:\Advanced_programming\Project_1\user.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+D:\Advanced_programming\Project_1\user.h(37,2): warning C4091: “typedef ”: 没有声明变量时忽略“userNode”的左侧
+D:\Advanced_programming\Project_1\order.h(26,2): warning C4091: “typedef ”: 没有声明变量时忽略“orderNode”的左侧
+  file.cpp
+D:\Advanced_programming\Project_1\user.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+D:\Advanced_programming\Project_1\user.h(37,2): warning C4091: “typedef ”: 没有声明变量时忽略“userNode”的左侧
+D:\Advanced_programming\Project_1\goods.h(28,2): warning C4091: “typedef ”: 没有声明变量时忽略“goodNode”的左侧
+D:\Advanced_programming\Project_1\order.h(26,2): warning C4091: “typedef ”: 没有声明变量时忽略“orderNode”的左侧
+  goods.cpp
+D:\Advanced_programming\Project_1\goods.h(28,2): warning C4091: “typedef ”: 没有声明变量时忽略“goodNode”的左侧
+D:\Advanced_programming\Project_1\user.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+D:\Advanced_programming\Project_1\user.h(37,2): warning C4091: “typedef ”: 没有声明变量时忽略“userNode”的左侧
+D:\Advanced_programming\Project_1\order.h(26,2): warning C4091: “typedef ”: 没有声明变量时忽略“orderNode”的左侧
+  order.cpp
+D:\Advanced_programming\Project_1\order.h(26,2): warning C4091: “typedef ”: 没有声明变量时忽略“orderNode”的左侧
+D:\Advanced_programming\Project_1\user.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+D:\Advanced_programming\Project_1\user.h(37,2): warning C4091: “typedef ”: 没有声明变量时忽略“userNode”的左侧
+D:\Advanced_programming\Project_1\goods.h(28,2): warning C4091: “typedef ”: 没有声明变量时忽略“goodNode”的左侧
+  total.cpp
+D:\Advanced_programming\Project_1\user.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+D:\Advanced_programming\Project_1\user.h(37,2): warning C4091: “typedef ”: 没有声明变量时忽略“userNode”的左侧
+D:\Advanced_programming\Project_1\goods.h(28,2): warning C4091: “typedef ”: 没有声明变量时忽略“goodNode”的左侧
+D:\Advanced_programming\Project_1\order.h(26,2): warning C4091: “typedef ”: 没有声明变量时忽略“orderNode”的左侧
+  user.cpp
+D:\Advanced_programming\Project_1\user.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+D:\Advanced_programming\Project_1\user.h(37,2): warning C4091: “typedef ”: 没有声明变量时忽略“userNode”的左侧
+D:\Advanced_programming\Project_1\goods.h(28,2): warning C4091: “typedef ”: 没有声明变量时忽略“goodNode”的左侧
+D:\Advanced_programming\Project_1\order.h(26,2): warning C4091: “typedef ”: 没有声明变量时忽略“orderNode”的左侧
+  正在生成代码...
+  Project_1.vcxproj -> D:\Advanced_programming\Project_1\x64\Debug\Project_1.exe

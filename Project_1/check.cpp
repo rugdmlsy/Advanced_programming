@@ -5,7 +5,7 @@ using namespace std;
 
 double check_db() {
     double i;
-    while (!(cin >> i) || i < 0)
+    while (!(cin >> i) || i <= 0)
         cout << "Invalid input! Please input again: ";
     return i;
 }

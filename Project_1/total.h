@@ -20,12 +20,18 @@ public:
     friend class Admin;
     friend void update_users();
     friend void update_goods();
+    friend void update_order();
     userNode *search_user(string uid);
     goodNode *search_good(string gid);
     friend class User;
     friend class Buyer;
     friend class Seller;
+    friend class order;
+    friend class Good;
     string gettime();
+    void add_order(orderNode* o);
+    void add_user(userNode* u);
+    void add_good(goodNode* g);
 };
 
 extern Total total;

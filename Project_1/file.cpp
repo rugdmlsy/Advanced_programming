@@ -12,7 +12,7 @@ void update_users()
     ofstream outfile("user.txt", ios::out | ios::trunc);
     if (!outfile.is_open())
     {
-        cout << "Failed to open file!\n";
+        cout << "Failed to open user.txt!\n";
         exit(-1);
     }
     outfile << UHead;
@@ -30,7 +30,7 @@ void update_goods()
     ofstream outfile("commodity.txt", ios::out | ios::trunc);
     if (!outfile.is_open())
     {
-        cout << "Failed to open file!\n";
+        cout << "Failed to open commodity.txt!\n";
         exit(-1);
     }
     outfile << COMMODITYHEAD;
@@ -38,6 +38,21 @@ void update_goods()
     while (p != nullptr)
     {
         outfile << p->gd.ID << "," << p->gd.name << "," << p->gd.price << "," << p->gd.amount << "," << p->gd.desc << "," << p->gd.sellerID << "," << p->gd.time << "," << p->gd.state << "\n";
+        p = p->next;
+    }
+    outfile.close();
+}
+
+void update_order() {
+    ofstream outfile("order.txt", ios::out | ios::trunc);
+    if (!outfile.is_open()) {
+        cout << "Failed to open order.txt!\n";
+        exit(-1);
+    }
+    outfile << OHead;
+    orderNode* p = total.orderHead;
+    while (p != NULL) {
+        outfile << p->odr.ID << "," << p->odr.goodID << "," << p->odr.price << "," << p->odr.amount << "," << p->odr.time << "," << p->odr.sellerID << "," << p->odr.buyerID << "\n";
         p = p->next;
     }
     outfile.close();

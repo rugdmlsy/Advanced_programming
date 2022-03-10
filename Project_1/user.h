@@ -17,7 +17,10 @@ public:
 	friend void update_users();
 	friend class Total;
 	friend class Buyer;
+	friend class Seller;
+	friend class Good;
 
+	void setID();
 	void menu();
 	void log_in();
 	void sign_up();
@@ -37,6 +40,11 @@ class Seller : public User
 {
 public:
 	void menu();
+	void see_goods();
+	void see_orders();
+	void unshelve();
+	void modi();
+	void launch();
 };
 
 class Buyer : public User
