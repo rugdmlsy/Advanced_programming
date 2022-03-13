@@ -8,3 +8,13 @@ void order::setID() {
     sprintf_s(onum, "T%03d", total.maxOID);
     ID = onum;
 }
+
+void order::assign(string oid, string ogid, double oprcd, int onbi, string otm, string osid, string obid) {
+    ID = oid;
+    goodID = ogid;
+    price = oprcd;
+    amount = onbi;
+    time = otm;
+    sellerID = osid;
+    buyerID = obid;
+}

@@ -19,6 +19,7 @@ public:
     friend class Buyer;
     friend class Admin;
     friend void update_goods();
+    void assign(string gid, string gnm, double gprcd, int gnbi, string gds, string gsid, string gtm, string gst);
 };
 
 typedef struct goodNode

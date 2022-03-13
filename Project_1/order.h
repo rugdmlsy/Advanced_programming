@@ -17,6 +17,7 @@ public:
     friend class Admin;
     friend void update_order();
     void setID();
+    void assign(string oid, string ogid, double oprcd, int onbi, string otm, string osid, string obid);
 };
 
 typedef struct orderNode

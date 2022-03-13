@@ -28,6 +28,7 @@ public:
 	void recharge();
 	void modi_info();
 	void view_info();
+	void assign(string uid, string unm, string upw, string upn, string uad, double ubad, string ust);
 };
 
 typedef struct userNode

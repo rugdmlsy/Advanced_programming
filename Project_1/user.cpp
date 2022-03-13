@@ -14,6 +14,16 @@ User user;
 Seller seller;
 Buyer buyer;
 
+void User::assign(string uid, string unm, string upw, string upn, string uad, double ubad, string ust) {
+    ID = uid;
+    name = unm;
+    pswd = upw;
+    number = upn;
+    addr = uad;
+    balance = ubad;
+    state = ust;
+}
+
 void User::setID() {
     total.maxUID += 1;
     char n[5];
