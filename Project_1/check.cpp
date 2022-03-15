@@ -58,9 +58,12 @@ string check_str(int len)
 {
     string ret;
     cin >> ret;
-    while (ret.length() > len)
+    while (ret.length() > len || ret.find(",") != string::npos)
     {
-        cout << "Please enter a maximum of " << len << " characters: ";
+        if (ret.length() > len)
+            cout << "Please enter a maximum of " << len << " characters: ";
+        else
+            cout << "Please do not enter comma symbol.\n";
         cin >> ret;
     }
     return ret;

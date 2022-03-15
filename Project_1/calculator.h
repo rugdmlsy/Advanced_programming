@@ -5,7 +5,7 @@ using namespace std;
  typedef struct numNode
 {
     double num;
-    char opr;
+    char opr = '@';
     numNode *next = NULL;
     numNode* fore = NULL;
 };
