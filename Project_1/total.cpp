@@ -76,3 +76,4 @@ void Total::add_good(goodNode* g) {
         p->next = g;
     }
 }
+

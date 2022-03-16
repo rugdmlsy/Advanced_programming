@@ -2,6 +2,7 @@
 #include "user.h"
 #include "goods.h"
 #include "order.h"
+#include "calculator.h"
 #include <string>
 using namespace std;
 

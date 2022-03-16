@@ -6,10 +6,12 @@
 #include "admin.h"
 int main()
 {
+	string str = "1+1";
+	cout << is_oper(str[1]) << endl;
 	string s="";
 	while (s != "exit") {
-		cin >> s;
-		cout << check_calc(s) << endl;
+		getline(cin, s);
+		cout<<calculator(s)<<endl;
 	}
 	
 }
